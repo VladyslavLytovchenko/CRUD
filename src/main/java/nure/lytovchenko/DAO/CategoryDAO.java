@@ -10,4 +10,5 @@ public interface CategoryDAO {
     List<Category> getAll();
     void add(Category category);
     void update(Category category);
+    void delete(int id);
 }

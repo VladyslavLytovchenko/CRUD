@@ -58,7 +58,6 @@ public class ItemController {
 
     @PostMapping(value = "/add")
     public String addItem(@ModelAttribute("item") Item item){
-        System.out.println(item.getId());
         if (item.getId()==0){
             itemService.add(item);
         }else{

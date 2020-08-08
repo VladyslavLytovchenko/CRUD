@@ -11,6 +11,8 @@
     <tr>
         <th>Имя</th>
         <th>Описание</th>
+        <th></th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -18,6 +20,8 @@
         <tr>
             <th>${category.name}</th>
             <th>${category.description}</th>
+            <th><a href="categories/edit/${category.id}">Edit</a></th>
+            <th><a href="categories/delete/${category.id}">Delete</a></th>
         </tr>
     </c:forEach>
     </tbody>

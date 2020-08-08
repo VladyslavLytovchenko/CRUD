@@ -32,11 +32,19 @@ public class CategoryDAOImpl implements CategoryDAO {
     @Override
     public void add(Category category) {
         Session session = sessionFactory.getCurrentSession();
-        session.saveOrUpdate(category);
+        session.save(category);
     }
 
     @Override
     public void update(Category category) {
+        Session session = sessionFactory.getCurrentSession();
+        session.update(category);
+    }
 
+    @Override
+    public void delete(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        Category category = session.get(Category.class,id);
+        session.delete(category);
     }
 }

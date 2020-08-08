@@ -2,7 +2,6 @@ package nure.lytovchenko.Controllers;
 
 import nure.lytovchenko.DAO.CategoryDAO;
 import nure.lytovchenko.Models.Category;
-import nure.lytovchenko.Models.Item;
 import nure.lytovchenko.Services.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,14 +29,23 @@ public class CategoryController {
 
     @PostMapping(value = "/add")
     public String addCategory(@ModelAttribute("category")Category category){
-        System.out.println(category.getName());
-        categoryDAO.add(category);
+        if (category.getId()==0){
+            categoryDAO.add(category);
+        }else{
+            categoryDAO.update(category);
+        }
         return "redirect:/categories";
     }
 
+    @GetMapping("/edit/{id}")
+    public String CategoryDelete(@PathVariable int id, Model model){
+        model.addAttribute("category",categoryDAO.getById(id));
+        return "CategoryEdit";
+    }
+
     @GetMapping("/delete/{id}")
-    public String ItemDisplay(@PathVariable int id, Model model){
-        model.addAttribute("item",categoryDAO.getById(id));
-        return "ItemCard";
+    public String CategoryEdit(@PathVariable int id, Model model){
+        categoryDAO.delete(id);
+        return "redirect:/categories";
     }
 }
