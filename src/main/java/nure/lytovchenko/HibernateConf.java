@@ -36,6 +36,9 @@ public class HibernateConf {
         dataSource.setUrl("jdbc:mysql://remotemysql.com:3306/8VTGRL4xdY?useUnicode=true&characterEncoding=UTF-8");
         dataSource.setUsername("8VTGRL4xdY");
         dataSource.setPassword("Q3028rYhIV");
+        dataSource.setMaxIdle(36000);
+        dataSource.setMinIdle(35999);
+        dataSource.addConnectionProperty("testOnBorrow","true");
         return dataSource;
     }
 

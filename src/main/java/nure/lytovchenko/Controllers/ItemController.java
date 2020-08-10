@@ -1,12 +1,16 @@
 package nure.lytovchenko.Controllers;
 
 import nure.lytovchenko.DAO.CategoryDAO;
+import nure.lytovchenko.DAO.UserDAO;
 import nure.lytovchenko.Models.Item;
+import nure.lytovchenko.Models.Role;
 import nure.lytovchenko.Services.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Iterator;
 
 @Controller
 @RequestMapping(value = "/items")
@@ -16,10 +20,18 @@ public class ItemController {
     @Autowired
     CategoryDAO categoryDAO;
 
+    @Autowired
+    UserDAO userDAO;
+
     @GetMapping()
     public String Items(Model model){
         model.addAttribute("items",itemService.getAll());
         model.addAttribute("categories",categoryDAO.getAll());
+        Iterator<Role> iterator = userDAO.getUserByUsername("jackman").getRoles().iterator();
+        while (iterator.hasNext()){
+            System.out.println(iterator.next().getRole());
+        }
+        System.out.println(123321);
         return "Items";
     }
 

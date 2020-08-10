@@ -1,21 +1,22 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: jeakm
-  Date: 08.08.2020
-  Time: 10:57
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set value="${pageContext.request.contextPath}" var="context"/>
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 <body>
-<a href="${item.id}/edit">EDIT</a>
-<a href="${item.id}/delete">asd</a>
-<a></a>
-<div class="card">
-    <img src="${pageContext.request.contextPath}/images/pict.jpg" alt="" style="width:100%">
+<table class="table">
+    <thead class="thead-light">
+    <tr>
+<th style="text-align: center"><a href="${item.id}/edit">EDIT</a></th>
+<th style="text-align: center"><a href="${item.id}/delete">DELETE</a></th>
+    </tr>
+    </thead>
+</table>
+<div style="width:20%" class="card">
+    <img src="${context}/images/pict.jpg" alt="" style="width:100%">
     <h1>${item.name}</h1>
     <p class="price">${item.price}</p>
     <p>${item.description}</p>

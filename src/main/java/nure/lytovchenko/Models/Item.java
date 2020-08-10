@@ -6,6 +6,12 @@ import javax.persistence.*;
 @Table(name = "Item")
 public class Item {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
+    private int id;
+
+
     @Column
     private String name;
     @Column
@@ -67,11 +73,6 @@ public class Item {
     public void setCategory(Category category) {
         this.category = category;
     }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
-    private int id;
 
 
 

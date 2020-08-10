@@ -37,13 +37,13 @@ public class CategoryController {
         return "redirect:/categories";
     }
 
-    @GetMapping("/edit/{id}")
+    @GetMapping("/{id}/edit")
     public String CategoryDelete(@PathVariable int id, Model model){
         model.addAttribute("category",categoryDAO.getById(id));
         return "CategoryEdit";
     }
 
-    @GetMapping("/delete/{id}")
+    @GetMapping("/{id}/delete")
     public String CategoryEdit(@PathVariable int id, Model model){
         categoryDAO.delete(id);
         return "redirect:/categories";
