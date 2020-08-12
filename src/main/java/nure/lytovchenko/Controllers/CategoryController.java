@@ -1,12 +1,14 @@
 package nure.lytovchenko.Controllers;
 
 import nure.lytovchenko.DAO.CategoryDAO;
+import nure.lytovchenko.DAO.UserDAO;
 import nure.lytovchenko.Models.Category;
 import nure.lytovchenko.Services.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.w3c.dom.UserDataHandler;
 
 @Controller
 @RequestMapping(value = "/categories")
@@ -15,6 +17,8 @@ public class CategoryController {
     ItemService itemService;
     @Autowired
     CategoryDAO categoryDAO;
+
+
     @GetMapping()
     public String Categories(Model model){
         model.addAttribute("categories",categoryDAO.getAll());

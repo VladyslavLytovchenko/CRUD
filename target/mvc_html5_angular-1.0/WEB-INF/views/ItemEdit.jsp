@@ -6,9 +6,15 @@
 <head>
     <title>Title</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        <%@include file='login.css' %>
+    </style>
 </head>
 <body>
-<form:form action="/PetProject/items/add" cssStyle="width: 400px" modelAttribute="item" method="POST">
+<form:form action="${pageContext.request.contextPath}/logout">
+    <button type="submit">LOGOUT</button>
+</form:form>
+<form:form class="form-signin" action="/PetProject/items/add" cssStyle="width: 400px" modelAttribute="item" method="POST">
     <form:input  readonly="true" class="form-control" path="id" type="hidden" name="id"/>
     <div class="form-group">
         <label >Название</label>
