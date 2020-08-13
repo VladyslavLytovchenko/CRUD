@@ -12,7 +12,7 @@ import java.util.List;
 
 @Repository
 @Transactional
-public class UserDAOImpl implements UserDAO {
+public class UserDAOImpl  implements UserDAO {
 
     private SessionFactory sessionFactory;
 
@@ -21,27 +21,28 @@ public class UserDAOImpl implements UserDAO {
         this.sessionFactory = sessionFactory;
     }
 
-    @Override
-    public User getUserByUsername(String username) {
+
+    public User findByUsername(String username) {
         Session session = sessionFactory.getCurrentSession();
         User user = session.get(User.class,username);
         return user;
     }
 
+
     @Override
-    public void saveOrUpdateUser(User user) {
+    public void save(User user) {
         Session session = sessionFactory.getCurrentSession();
-        session.saveOrUpdate(user);
+        session.save(user);
     }
 
 
-    @Override
+
     public List<User> listUsers() {
         Session session = sessionFactory.getCurrentSession();
         return session.createQuery("from User").list();
     }
 
-    @Override
+
     public void delete(String username) {
         Session session = sessionFactory.getCurrentSession();
         User user = session.get(User.class,username);

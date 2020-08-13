@@ -29,9 +29,7 @@ public class UserController {
 
     @PostMapping("/reg")
     public String saveUser(@ModelAttribute User user) {
-        System.out.println("+++");
-        System.out.println(user.getRoles());
-        userService.saveOrUpdateUser(user);
+        userService.save(user);
         return "login";
     }
 
@@ -39,7 +37,7 @@ public class UserController {
     public String addItem(@PathVariable String name, @ModelAttribute("user") User user) {
         System.out.println(user.getUsername());
         //userService.delete(user.getUsername());
-        userService.saveOrUpdateUser(user);
+        userService.save(user);
         return "redirect:/items";
     }
 

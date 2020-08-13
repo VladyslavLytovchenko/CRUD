@@ -19,6 +19,8 @@ import java.util.Properties;
 @org.springframework.context.annotation.Configuration
 @EnableTransactionManagement
 public class HibernateConf {
+
+
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();

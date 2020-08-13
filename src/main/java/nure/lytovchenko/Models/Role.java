@@ -2,6 +2,7 @@ package nure.lytovchenko.Models;
 
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table
@@ -9,15 +10,14 @@ public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
+    @Column(name = "role_id")
     private int id;
 
     @Column
     private String role;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="username")
-    private User user;
+   @ManyToMany(mappedBy = "roles")
+    private Set<User> users;
 
     public Role(){}
 
@@ -25,8 +25,8 @@ public class Role {
         this.role = role;
     }
 
-    public Role(User user,String role){
-        this.user = user;
+    public Role(Set<User> users,String  role){
+        this.users = users;
         this.role = role;
     }
 
@@ -46,25 +46,11 @@ public class Role {
         this.role = role;
     }
 
-    public User getUser() {
-        return user;
+    public Set<User> getUsers() {
+        return users;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Role role1 = (Role) o;
-        return role.equals(role1.role) &&
-                user.equals(role1.user);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(role, user);
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 }

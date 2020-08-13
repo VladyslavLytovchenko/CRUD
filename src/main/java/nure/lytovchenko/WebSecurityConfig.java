@@ -20,17 +20,16 @@ import javax.servlet.http.HttpServletResponse;
 @Order(2)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
-    @Qualifier("userDetailsService")
     UserDetailsService userDetailsService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/**/menu*","/**/reg","/**/users","**/editUser*").permitAll()
-                .antMatchers("/**/edit", "/**/delete","/**/addItem").hasAnyRole("ADMIN")
-                .antMatchers("/categories/**", "/items/**").hasAnyRole("USER")
-                .anyRequest().authenticated()
+                .anyRequest().permitAll()
+               // .antMatchers("/**/edit", "/**/delete","/**/addItem").hasAnyRole("ADMIN")
+            //    .antMatchers("/categories/**", "/items/**").hasAnyRole("USER")
+
                 .and()
                 .formLogin()
                 .loginPage("/login")

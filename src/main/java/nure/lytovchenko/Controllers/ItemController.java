@@ -20,8 +20,6 @@ public class ItemController {
     @Autowired
     CategoryDAO categoryDAO;
 
-    @Autowired
-    UserDAO userDAO;
 
     @GetMapping()
     public String listItems(Model model){
