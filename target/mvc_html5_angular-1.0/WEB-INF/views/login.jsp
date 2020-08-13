@@ -16,7 +16,6 @@
      <input name="username" type="text" class="form-control" placeholder="Username" autofocus="true"/>
    <input name="password" type="password" class="form-control" placeholder="Password"/>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
-
 </form:form>
 </body>
 </html>

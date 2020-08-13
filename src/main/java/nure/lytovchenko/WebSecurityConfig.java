@@ -27,7 +27,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/**/menu*").permitAll()
+                .antMatchers("/**/menu*","/**/reg","/**/users","**/editUser*").permitAll()
                 .antMatchers("/**/edit", "/**/delete","/**/addItem").hasAnyRole("ADMIN")
                 .antMatchers("/categories/**", "/items/**").hasAnyRole("USER")
                 .anyRequest().authenticated()
@@ -46,7 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService);
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
 

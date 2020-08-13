@@ -1,8 +1,13 @@
 package nure.lytovchenko.Services;
 
 import nure.lytovchenko.Models.User;
-import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.List;
 
 public interface UserService {
-    User getUserByUsername(String username);
+   void saveOrUpdateUser(User user);
+
+   void delete(String username);
+
+   List<User> listUsers();
 }

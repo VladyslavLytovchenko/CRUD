@@ -24,14 +24,9 @@ public class ItemController {
     UserDAO userDAO;
 
     @GetMapping()
-    public String Items(Model model){
+    public String listItems(Model model){
         model.addAttribute("items",itemService.getAll());
         model.addAttribute("categories",categoryDAO.getAll());
-        Iterator<Role> iterator = userDAO.getUserByUsername("jackman").getRoles().iterator();
-        while (iterator.hasNext()){
-            System.out.println(iterator.next().getRole());
-        }
-        System.out.println(123321);
         return "Items";
     }
 
