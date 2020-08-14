@@ -14,8 +14,10 @@
 <table class="table">
     <thead class="thead-dark">
     <tr>
+        <th>id</th>
         <th>Имя</th>
-        <th>Описание</th>
+        <th>Пароль</th>
+        <th></th>
         <th></th>
         <th></th>
     </tr>
@@ -24,19 +26,20 @@
 
     <c:forEach var="user" items="${users}">
         <tr>
-            <form:form method="POST" action="${pageContext.request.contextPath}/editUser/${user.username}" modelAttribute="user">
-
+            <form:form method="POST" action="${pageContext.request.contextPath}/editUser/${user.id}" modelAttribute="user">
+                <th><form:input disabled="true" path="id" value="${user.id}"/></th>
             <th><form:input path="username" value="${user.username}"/></th>
             <th><form:input path="password" value="${user.password}"/></th>
+                <th>
                 <c:forEach items="${roles}" var="role" varStatus="status">
-                    <th> <form:checkbox path="roles" value="${role.role}" label="${role.role}" /></th>
+                    <p><form:checkbox path="roles" value="${role.id}" label="${role.role}" /></p>
                 </c:forEach>
+                </th>
             <th><button class="btn btn-lg btn-primary btn-block" type="submit">Save</button></th>
             </form:form>
-            <th><a href="categories/${user.username}/delete">Delete</a></th>
+            <th><a href="${pageContext.request.contextPath}/deleteUser/${user.id}">Delete</a></th>
         </tr>
     </c:forEach>
-
     </tbody>
 </table>
 

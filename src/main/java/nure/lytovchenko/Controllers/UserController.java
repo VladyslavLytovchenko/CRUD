@@ -1,5 +1,6 @@
 package nure.lytovchenko.Controllers;
 
+import nure.lytovchenko.DAO.RoleDAO;
 import nure.lytovchenko.Models.Role;
 import nure.lytovchenko.Models.User;
 import nure.lytovchenko.Services.UserService;
@@ -15,6 +16,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class UserController {
     @Autowired
     UserService userService;
+
+    @Autowired
+    RoleDAO roleDAO;
 
     @GetMapping("/login")
     public String login() {
@@ -33,18 +37,21 @@ public class UserController {
         return "login";
     }
 
-    @PostMapping(value = "/editUser/{name}")
-    public String addItem(@PathVariable String name, @ModelAttribute("user") User user) {
-        System.out.println(user.getUsername());
-        //userService.delete(user.getUsername());
-        userService.save(user);
-        return "redirect:/items";
+    @PostMapping("/editUser/{id}")
+    public String updateUser(@PathVariable int id, @ModelAttribute("user") User user) {
+        userService.update(user);
+        return "redirect:/users";
+    }
+
+    @GetMapping("/deleteUser/{id}")
+    public String deleteItem(@PathVariable int id, @ModelAttribute("user") User user) {
+        userService.delete(id);
+        return "redirect:/users";
     }
 
     @GetMapping("/users")
     public String listUsers(Model model) {
-        System.out.println("/users");
-        model.addAttribute("roles", new Role[]{new Role("ROLE_ADMIN"),new Role("ROLE_USER")});
+        model.addAttribute("roles", roleDAO.listRoles());
         model.addAttribute("users", userService.listUsers());
         model.addAttribute("user",new User());
         return "users";
