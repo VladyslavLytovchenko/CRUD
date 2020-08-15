@@ -1,7 +1,4 @@
 <%@ include file="header.jsp"%>
-<form:form action="${pageContext.request.contextPath}/logout">
-    <button type="submit">LOGOUT</button>
-</form:form>
 <form:form class="form-signin" action="/PetProject/items/add" cssStyle="width: 400px" modelAttribute="item" method="POST">
     <form:input  readonly="true" class="form-control" path="id" type="hidden" name="id"/>
     <div class="form-group">

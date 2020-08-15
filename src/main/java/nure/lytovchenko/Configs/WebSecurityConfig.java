@@ -1,4 +1,4 @@
-package nure.lytovchenko;
+package nure.lytovchenko.Configs;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -26,7 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("**/edit", "/**/delete","/**/addItem").hasAnyRole("ADMIN")
+                .antMatchers("**/edit", "/**/delete","/**/addItem","/users").hasAnyRole("ADMIN")
                 .antMatchers("/categories/**", "/items/**").hasAnyRole("USER")
                 .anyRequest().permitAll()
                 .and()
@@ -44,7 +44,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        //System.out.println( " aaa "+userDetailsService.loadUserByUsername("dd"));
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 

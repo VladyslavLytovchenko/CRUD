@@ -68,6 +68,8 @@ public class ItemController {
         }else{
             itemService.update(item);
         }
+        System.out.println("asdasd");
+        System.out.println(item.getName());
         return "redirect:/items";
     }
 }

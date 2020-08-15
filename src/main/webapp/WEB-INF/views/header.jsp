@@ -1,4 +1,6 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%@ page pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("UTF-8");%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
@@ -14,6 +16,7 @@
 </head>
 <body>
 <c:if test="${pageContext.request.userPrincipal.name != null}">
+<a href="${context}">MAIN MENU</a>
     <form:form  action="${context}/logout">
         <button class="btn btn-outline-danger" type="submit">LOGOUT</button>
     </form:form>

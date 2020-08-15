@@ -1,7 +1,4 @@
 <%@ include file="header.jsp"%>
-<form:form action="${pageContext.request.contextPath}/logout">
-    <button type="submit">LOGOUT</button>
-</form:form>
 <table class="table">
     <thead class="thead-dark">
     <tr>

@@ -1,5 +1,5 @@
 <%@ include file="header.jsp"%>
-<form:form action="/PetProject/categories/add" cssStyle="width: 400px" modelAttribute="category" method="POST">
+<form:form class="form-signin" action="/PetProject/categories/add" cssStyle="width: 400px" modelAttribute="category" method="POST">
     <div class="form-group">
         <label>Name</label>
         <form:input path="name" type="text" name="id"/>

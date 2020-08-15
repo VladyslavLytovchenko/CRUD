@@ -3,8 +3,8 @@
     <thead class="thead-dark">
     <tr>
         <th>id</th>
-        <th>Имя</th>
-        <th>Пароль</th>
+        <th>Name</th>
+        <th>Password</th>
         <th></th>
         <th></th>
         <th></th>
@@ -30,8 +30,5 @@
     </c:forEach>
     </tbody>
 </table>
-
-
-<a href="${pageContext.request.contextPath}/categories/addCategory">Добавить Категорию</a>
 </body>
 </html>

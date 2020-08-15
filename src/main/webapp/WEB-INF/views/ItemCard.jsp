@@ -7,12 +7,11 @@
     </tr>
     </thead>
 </table>
-<div style="width:20%" class="card">
+<div style="width:20%;margin-left: auto;margin-right: auto" class="card">
     <img src="${context}/images/pict.jpg" alt="" style="width:100%">
     <h1>${item.name}</h1>
     <p class="price">${item.price}</p>
     <p>${item.description}</p>
-    <p><button>Добавить карточку</button></p>
 </div>
 </body>
 </html>
