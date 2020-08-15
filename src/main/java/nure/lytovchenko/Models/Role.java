@@ -16,7 +16,7 @@ public class Role {
     @Column
     private String role;
 
-   @ManyToMany(mappedBy = "roles",cascade = CascadeType.PERSIST)
+   @ManyToMany(mappedBy = "roles")
     private Set<User> users;
 
     public Role(){}

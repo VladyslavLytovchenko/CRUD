@@ -21,7 +21,7 @@ public class Item {
     @Column
     private String picture;
 
-    @ManyToOne (optional=false)
+    @ManyToOne (optional=true)
     @JoinColumn (name="categoryId")
     private Category category;
 
